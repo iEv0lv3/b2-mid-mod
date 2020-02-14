@@ -1,0 +1,9 @@
+<div>
+  <div class="actorShowPage">
+    <h1><%= @actor.name %></h1>
+    <p><%= @actor.age %></p>
+    <% @actor.movies.each do |movie| %>
+      <p><%= movie.name %></p>
+    <% end %>
+  </div>
+</div>

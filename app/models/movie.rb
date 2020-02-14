@@ -7,4 +7,14 @@ class Movie < ApplicationRecord
   def young_to_old
     actors.joins(:actor_movies).order(age: :asc)
   end
+
+  def average_age
+    # this is bad, I know
+    ages = []
+    actors.each do |actor|
+      ages << actor.age.to_i
+    end
+
+    ages.sum / ages.size
+  end
 end

@@ -25,39 +25,16 @@ RSpec.describe 'As a visitor', type: :feature do
     @actor4 = @movie2.actors.create(name: 'Ian Mcellan',
                                     age: '75')
   end
+
   describe 'When I visit a movie show page' do
-    it 'I see the movie name, creation year, and genre' do
+    it 'there is a form to enter an actors name' do
       visit "/movies/#{@movie1.id}"
 
-      expect(page).to have_content(@movie1.name)
-      expect(page).to have_content(@movie1.creation_year)
-      expect(page).to have_content(@movie1.genre)
+      fill_in :name, with: 'Elijah Wood'
+      click_button 'Add Actor'
 
-      visit "/movies/#{@movie2.id}"
-
-      expect(page).to have_content(@movie2.name)
-      expect(page).to have_content(@movie2.creation_year)
-      expect(page).to have_content(@movie2.genre)
-    end
-
-    it 'I see the actors from youngest to oldest' do
-      visit "/movies/#{@movie1.id}"
-
-      expect(page).to have_content('Daisy Ridley')
-      expect(page).to have_content('Jon Boyega')
-
-      visit "/movies/#{@movie2.id}"
-
+      expect(current_path).to eq("/movies/#{@movie1.id}")
       expect(page).to have_content('Elijah Wood')
-      expect(page).to have_content('Ian Mcellan')
-    end
-
-    it 'I see the average age of all the movie actors' do
-      visit "/movies/#{@movie1.id}"
-      expect(page).to have_content('31')
-
-      visit "/movies/#{@movie2.id}"
-      expect(page).to have_content('56')
     end
   end
 end

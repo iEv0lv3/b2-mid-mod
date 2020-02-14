@@ -9,3 +9,9 @@
     <p><%= actor.name %></p>
   <% end %>
 </div>
+<div>
+  <%= form_tag "/movies/#{@movie.id}", method: :patch do  %>
+    <p>Enter an actor name: <%= text_field_tag :name %></p>
+    <%= submit_tag 'Add Actor' %>
+  <% end %>
+</div>

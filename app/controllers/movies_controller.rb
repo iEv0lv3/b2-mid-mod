@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
 
   def update
     movie = Movie.find(params[:id])
-    movie.actors.create(name: params[:name])
+    movie.actors.create(name: params[:name],
+                        age: '32')
   end
 end

@@ -41,7 +41,15 @@ RSpec.describe 'As a visitor', type: :feature do
     end
 
     it 'I see the actors from youngest to oldest' do
+      visit "/movies/#{@movie1.id}"
 
+      expect(page).to have_content('Daisy Ridley')
+      expect(page).to have_content('Jon Boyega')
+
+      visit "/movies/#{@movie2.id}"
+
+      expect(page).to have_content('Elijah Wood')
+      expect(page).to have_content('Ian Mcellan')
     end
 
     it 'I see the average age of all the movie actors' do

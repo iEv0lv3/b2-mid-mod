@@ -3,3 +3,9 @@
   <p><%= @movie.creation_year %></p>
   <p><%= @movie.genre %></p>
 </div>
+<div>
+  <%= @movie.young_to_old.each do |actor| %>
+    <p><%= actor.name %></p>
+  <% end %>
+  save_and_open_page
+</div>

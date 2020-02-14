@@ -12,4 +12,34 @@ RSpec.describe Movie, type: :model do
     it { should have_many :actor_movies }
     it { should have_many(:actors).through(:actor_movies) }
   end
+  
+  describe '#young_to_old' do
+    it 'should display youngest to oldest' do
+      @studio1 = Studio.create(name: 'Disney')
+      @studio2 = Studio.create(name: 'MGM')
+
+      @movie1 = @studio1.movies.create(name: 'Star Wars',
+                                        creation_year: '2019',
+                                        genre: 'sci-fi')
+
+      @movie2 = @studio2.movies.create(name: 'Lord of the Rings',
+                                        creation_year: '2006',
+                                        genre: 'fantasy')
+
+      @actor1 = @movie1.actors.create(name: 'Daisy Ridley',
+                                      age: '30')
+
+      @actor2 = @movie1.actors.create(name: 'Jon Boyega',
+                                      age: '32')
+
+      @actor3 = @movie2.actors.create(name: 'Elijah Wood',
+                                      age: '38')
+
+      @actor4 = @movie2.actors.create(name: 'Ian Mcellan',
+                                      age: '75')
+
+      expect(@movie1.young_to_old.first.name).to eq('Daisy Ridley')
+      expect(@movie1.young_to_old.last.name).to eq('Jon Boyega')
+    end
+  end
 end

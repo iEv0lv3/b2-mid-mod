@@ -3,4 +3,8 @@ class Movie < ApplicationRecord
   belongs_to :studio
   has_many :actor_movies
   has_many :actors, through: :actor_movies
+
+  def young_to_old
+    actors.joins(:actor_movies).order(age: :asc)
+  end
 end

@@ -6,8 +6,8 @@ RSpec.describe 'As a visitor', type: :feature do
       @studio1 = Studio.create(name: 'Disney')
       @studio2 = Studio.create(name: 'MGM')
 
-      @movie1 = @studio1.movie.create(name: 'Star Wars')
-      @movie2 = @studio2.movie.create(name: 'Lord of the Rings')
+      @movie1 = @studio1.movies.create(name: 'Star Wars')
+      @movie2 = @studio2.movies.create(name: 'Lord of the Rings')
 
     end
     it 'I see all of the movie studios' do

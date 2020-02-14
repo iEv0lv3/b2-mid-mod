@@ -15,7 +15,7 @@ RSpec.describe 'As a visitor', type: :feature do
                                        genre: 'fantasy')
     end
 
-    it 'I see all of the movie studios' do
+    it 'I see all of the movie studios and its movies' do
       visit '/studios'
       within("div#studio_#{@studio1.id}") do
         expect(page).to have_content('Disney')
@@ -27,15 +27,5 @@ RSpec.describe 'As a visitor', type: :feature do
         expect(page).to have_content('Lord of the Rings')
       end
     end
-
-    it 'Underneath each studio I see all its movies' do
-
-    end
   end
 end
-
-# Story 1
-# As a user, 
-# When I visit the studio index page
-# I see a list of all of the movie studios 
-# And underneath each studio, I see the names of all of its movies.

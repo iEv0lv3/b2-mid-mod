@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'As a something', type: :model do
+RSpec.describe Studio, type: :model do
   describe 'validations' do
     it { should_validate_presence_of :name }
   end
